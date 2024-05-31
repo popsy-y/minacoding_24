@@ -3,14 +3,22 @@ import { dailySketches } from "./dailySketches"
 
 let date = 1
 
+export const setDate = (d: number) => {
+    date = d
+}
+
 const sketch = (p: p5) => {
     let internalDate = date
 
     let cnv
 
     p.setup = () => {
-        cnv = p.createCanvas(800, 800)
-        cnv.mousePressed(() => {date = date == 2 ? 1 : 2})
+        const ui = document.getElementById('uiWrapper')
+        if (ui == null) throw new Error("Element 'uiWrapper' is null!")
+        const h = ui.clientHeight
+
+        cnv = p.createCanvas(h, h)
+        cnv.parent(document.getElementById("canvWrapper"))
 
         p.setFrameRate(dailySketches[internalDate - 1].fps)
     }
@@ -21,9 +29,8 @@ const sketch = (p: p5) => {
             p.setFrameRate(dailySketches[internalDate - 1].fps)
         }
 
-        dailySketches[0].func(p)
+        dailySketches[0].draw(p)
     }
-    
 }
 
 new p5(sketch)

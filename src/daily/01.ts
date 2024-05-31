@@ -1,12 +1,16 @@
 import { info } from "../types"
+import { dailySketch } from "../interfaces"
 import p5 from "p5"
 
-export const information: info = {
-    day: 0,
-    theme: "some theme"
+export const sketch:dailySketch = {
+    info: {
+        day: 0,
+        theme: "some theme"
+    },
+    fps: 60,
+    init: () => {},
+    draw: (p: p5) => draw(p)
 }
-
-export const fps = 15
 
 export const draw = (p: p5) => {
     p.background(255, 255, 255, 100)
