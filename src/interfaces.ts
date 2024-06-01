@@ -4,6 +4,6 @@ import { info } from "./types"
 export interface dailySketch {
     info: info,
     fps: number,
-    init(): void,
+    init(p: p5): void,
     draw(p: p5): void
 }

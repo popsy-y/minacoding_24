@@ -21,15 +21,17 @@ const sketch = (p: p5) => {
         cnv.parent(document.getElementById("canvWrapper"))
 
         p.setFrameRate(dailySketches[internalDate - 1].fps)
+        dailySketches[internalDate - 1].init(p)
     }
     
     p.draw = () => {
         if(date != internalDate){
             internalDate = date
             p.setFrameRate(dailySketches[internalDate - 1].fps)
+            dailySketches[internalDate - 1].init(p)
         }
 
-        dailySketches[0].draw(p)
+        dailySketches[internalDate - 1].draw(p)
     }
 }
 
