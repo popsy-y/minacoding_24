@@ -54,7 +54,7 @@ const N_V_min = 10
 let N_V = 10
 
 export const draw = (p: p5) => {
-    if (verts.length == 0) refreshVerts(p)
+    if (verts.length == 0) refresh(p)
 
     p.background(p.color(palette[paletteIdx].bg))
     p.fill(p.color(palette[paletteIdx].shp))
@@ -62,7 +62,7 @@ export const draw = (p: p5) => {
     p.translate(p.width / 2, p.height / 2)
 
     if (p.frameCount % cycleLength == 0) {
-        refreshVerts(p)
+        refresh(p)
     }
 
     const t = quintEase((p.frameCount % cycleLength) / cycleLength)
@@ -92,7 +92,7 @@ const putVert = (p: p5, v: vertData, idx: number, unitAng: number, t: number) =>
     p.vertex(vRad * p.cos(vertAng), vRad * p.sin(vertAng))
 }
 
-const refreshVerts = (p: p5) => {
+const refresh = (p: p5) => {
     N_V = p.ceil(p.random(N_V_min, N_V_max))
 
     verts.length = 0;
