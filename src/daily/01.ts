@@ -42,7 +42,7 @@ type vertData = {
     ofst: number
 }
 
-const rad = 100
+const rad = 200
 
 const maxOfst = 20
 const cycleLength = 20
