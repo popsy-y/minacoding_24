@@ -4,8 +4,8 @@ import p5 from "p5"
 
 export const sketch:dailySketch = {
     info: {
-        day: 0,
-        theme: "some theme"
+        day: 1,
+        theme: "Favorite Song"
     },
     fps: 60,
     init: (p: p5) => {console.log("hoge");p.noStroke()},
