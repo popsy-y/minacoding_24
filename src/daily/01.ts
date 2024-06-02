@@ -2,13 +2,14 @@ import { info } from "../types"
 import { dailySketch } from "../interfaces"
 import p5 from "p5"
 
-export const sketch:dailySketch = {
+export const sketch: dailySketch = {
     info: {
         day: 1,
         theme: "Favorite Song"
     },
     fps: 60,
-    init: (p: p5) => {console.log("hoge");p.noStroke()},
+    init: (p: p5) => {p.noStroke()},
+    exit: (p: p5) => {p.noFill()},
     draw: (p: p5) => draw(p)
 }
 

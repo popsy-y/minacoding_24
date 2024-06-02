@@ -5,5 +5,6 @@ export interface dailySketch {
     info: info,
     fps: number,
     init(p: p5): void,
+    exit?(p: p5): void,
     draw(p: p5): void
 }

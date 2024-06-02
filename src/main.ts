@@ -1,7 +1,8 @@
 import p5 from "p5"
 import { dailySketches } from "./dailySketches"
 
-let date = 1
+const d = new Date()
+let date = d.getDate() <= 30 ? d.getDate() : 1
 
 export const setDate = (d: number) => {
     date = d
@@ -9,6 +10,7 @@ export const setDate = (d: number) => {
 
 const sketch = (p: p5) => {
     let internalDate = date
+    let currentSketch = dailySketches[internalDate - 1]
 
     let cnv
 
@@ -20,18 +22,25 @@ const sketch = (p: p5) => {
         cnv = p.createCanvas(h, h)
         cnv.parent(document.getElementById("canvWrapper"))
 
-        p.setFrameRate(dailySketches[internalDate - 1].fps)
-        dailySketches[internalDate - 1].init(p)
+        p.setFrameRate(currentSketch.fps)
+        currentSketch.init(p)
     }
     
     p.draw = () => {
         if(date != internalDate){
+            if (currentSketch.exit != undefined) {
+                currentSketch.exit(p)
+            }
+
             internalDate = date
-            p.setFrameRate(dailySketches[internalDate - 1].fps)
-            dailySketches[internalDate - 1].init(p)
+            currentSketch = dailySketches[internalDate - 1]
+
+
+            p.setFrameRate(currentSketch.fps)
+            currentSketch.init(p)
         }
 
-        dailySketches[internalDate - 1].draw(p)
+        currentSketch.draw(p)
     }
 }
 
