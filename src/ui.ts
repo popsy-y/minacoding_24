@@ -13,7 +13,7 @@ if (list == null) {
 themes.forEach((theme, idx) => {
     const parent = document.createElement('li')
     parent.classList.add('themeListElem')
-    if (idx == 0) parent.classList.add('activeTheme')
+    if (idx + 1 == new Date().getDate()) parent.classList.add('activeTheme')
 
     parent.addEventListener(('click'), () => {
         setDate(idx + 1)

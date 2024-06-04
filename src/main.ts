@@ -8,13 +8,13 @@ export const setDate = (d: number) => {
     date = d
 }
 
-const sketch = (p: p5) => {
+const sketch = async (p: p5) => {
     let internalDate = date
     let currentSketch = dailySketches[internalDate - 1]
 
     let cnv
 
-    p.setup = () => {
+    p.setup = async () => {
         const ui = document.getElementById('uiWrapper')
         if (ui == null) throw new Error("Element 'uiWrapper' is null!")
         const h = ui.clientHeight
@@ -23,10 +23,10 @@ const sketch = (p: p5) => {
         cnv.parent(document.getElementById("canvWrapper"))
 
         p.setFrameRate(currentSketch.fps)
-        currentSketch.init(p)
+        await currentSketch.init(p)
     }
     
-    p.draw = () => {
+    p.draw = async () => {
         if(date != internalDate){
             if (currentSketch.exit != undefined) {
                 currentSketch.exit(p)
@@ -37,7 +37,7 @@ const sketch = (p: p5) => {
 
 
             p.setFrameRate(currentSketch.fps)
-            currentSketch.init(p)
+            await currentSketch.init(p)
         }
 
         currentSketch.draw(p)
