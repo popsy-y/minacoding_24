@@ -7,7 +7,7 @@ export const sketch:dailySketch = {
         day: 5,
         theme: "Many"
     },
-    fps: 1,
+    fps: 2,
     init: (p: p5) => {
         p.noStroke()
     },
