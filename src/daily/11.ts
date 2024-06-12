@@ -4,8 +4,8 @@ import p5 from "p5"
 
 export const sketch:dailySketch = {
     info: {
-        day: 0,
-        theme: "some theme"
+        day: 11,
+        theme: "Capture Image"
     },
     fps: 15,
     init: () => {},
